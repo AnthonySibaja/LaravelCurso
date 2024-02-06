@@ -8,6 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Post;
+use App\Models\Role;
+use App\Models\Permission;
+use App\Models\User;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -44,5 +47,12 @@ class User extends Authenticatable
 
     public function posts(){
         return $this->hasMany(Post::class);
+    }
+
+    public function permissions(){
+        return $this->belongsToMany(Permissions::class);
+    }
+    public function roles(){
+        return $this->belongsToMany(Role::class);
     }
 }
