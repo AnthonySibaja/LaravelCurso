@@ -14,12 +14,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="username">Username</label>
                         <input  type="text" 
-                                name="name" 
+                                name="username" 
                                 class="form-control" 
-                                id="name" 
-                                value="{{$user->name}}">
+                                id="username" 
+                                value="{{$user->username}}">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
