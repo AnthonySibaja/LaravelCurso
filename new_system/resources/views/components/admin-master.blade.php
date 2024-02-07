@@ -58,6 +58,12 @@
         
       </x-admin-sidebar-posts-links>
 
+      <x-admin-sidebar-user-links>
+
+        
+      </x-admin-sidebar-user-links>
+
+
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">

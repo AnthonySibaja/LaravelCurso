@@ -5,11 +5,12 @@
         <div class="row">
             <div class="col-sm-6">
                 <form action="{{ route('user.profile.update', $user) }}" method="post" enctype="multipart/form-data">
+
                     @csrf
                     @method('PUT')
                     <div class="mb-4">
-                        <img class="img-profile rounded-circle" height="80px"
-                            src="{{$user->avatar}}">
+                        <img class="img-profile rounded-circle" height="80px" src="{{ asset($user->avatar) }}">
+
                     </div>
                     <div class="form-group">
                         <input type="file" name="avatar">
