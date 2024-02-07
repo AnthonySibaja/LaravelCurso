@@ -53,17 +53,12 @@
         Interface
       </div>
 
-      <x-admin-sidebar-posts-links>
+      <x-admin-sidebar-posts-links></x-admin-sidebar-posts-links>
+      @if(auth()->user()->userHasRole('Admin'))
+          <x-admin-sidebar-user-links></x-admin-sidebar-user-links>
+      @endif
 
-        
-      </x-admin-sidebar-posts-links>
-
-      <x-admin-sidebar-user-links>
-
-        
-      </x-admin-sidebar-user-links>
-
-
+      
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">

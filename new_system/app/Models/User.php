@@ -11,6 +11,8 @@ use App\Models\Post;
 use App\Models\Role;
 use App\Models\Permission;
 use App\Models\User;
+use Illuminate\Support\Str;
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -66,7 +68,7 @@ class User extends Authenticatable
     public function userHasRole($role_name){
         
         foreach($this->roles as $role){
-            if($role_name ==$role->name)
+            if(Str::lower($role_name) == Str::lower($role->name))
             return true;
         }  
 
