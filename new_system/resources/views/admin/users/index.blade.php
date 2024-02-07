@@ -1,6 +1,12 @@
 <x-admin-master>
     @section('content')
         <h1>Users</h1>
+
+        @if(session('user-deleted'))
+        <div>
+            <div class="alert alert-danger">{{session('user-deleted')}}</div>
+        </div>
+        @endif
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary" >DataTables Example</h6>
@@ -17,6 +23,7 @@
                                 <th>Name</th>
                                 <th>Registered date</th>
                                 <th>Updated profile date</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <thead>
@@ -28,6 +35,7 @@
                                 <th>Name</th>
                                 <th>Registered date</th>
                                 <th>Updated profile date</th>
+                                <th>Delete</th>
                             </tr>
                             </tfoot>
                             <tbody>
@@ -42,7 +50,16 @@
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->created_at->diffForhumans()}}</td>
                                         <td>{{$user->updated_at->diffForhumans()}}</td>
+                                        
                                     </td>
+                                    <td>
+                                        <form action="{{ route('user.destroy', $user->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger">DELETE</button>
+                                        </form>
+                                    </td>
+                                    
                                 </tr>
                                 @endforeach
                             </tbody>
