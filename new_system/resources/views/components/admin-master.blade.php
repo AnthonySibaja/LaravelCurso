@@ -53,9 +53,9 @@
         Interface
       </div>
 
-      <x-admin-sidebar-posts-links></x-admin-sidebar-posts-links>
+      <x-admin.sidebar.admin-sidebar-posts-links></x-admin.sidebar.admin-sidebar-posts-links>
       @if(auth()->user()->userHasRole('Admin'))
-          <x-admin-sidebar-user-links></x-admin-sidebar-user-links>
+      <x-admin.sidebar.admin-sidebar-user-links></x-admin.sidebar.admin-sidebar-user-links>
       @endif
 
       
@@ -286,7 +286,7 @@
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
-           <x-admin-top-navbar-user-info></x-admin-top-navbar-user-info>
+           <x-admin.top-nav.admin-top-navbar-user-info></x-admin.top-nav.admin-top-navbar-user-info>
 
 
           </ul>
