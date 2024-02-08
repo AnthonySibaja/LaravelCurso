@@ -27,4 +27,13 @@ class RoleController extends Controller
         return back();
         //dd(request('name'));
     }
+
+    public function destroy(Role $role){
+        $role->delete();
+        session()->flash('role-deleted', 'Deleted Role '. $role->name);
+        return back();
+    }
+    public function edit(Role $role){
+        return view('admin.role.edit', ['role'=>$role]);
+    }
 }
