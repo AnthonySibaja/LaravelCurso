@@ -57,6 +57,58 @@
                 </form>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Options</th>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Slug</th>
+                                <th>Attach</th>
+                                <th>Detach</th>
+                            </tr>
+                        </thead>
+                        <thead>
+                            <tfoot>
+                            <tr>
+                                <th>Options</th>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Slug</th>
+                                <th>Attach</th>
+                                <th>Detach</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach($roles as $role)
+                                <tr>
+                                    <td><input type="checkbox"></td>
+                                    <td>{{$role->id}}</td>
+                                    <td>{{$role->name}}</td>
+                                    <td>{{$role->slug}}</td>
+                                    <td><button class="btn btn-primary">Attach</button></td>
+                                    <td><button class="btn btn-danger">Detach</button></td>
+                                    
+                                </tr>
+                                @endforeach
+                            </tbody>
+                            
+                        </thead>
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+            </div>
+
+        </div>
     @endsection
 
 
