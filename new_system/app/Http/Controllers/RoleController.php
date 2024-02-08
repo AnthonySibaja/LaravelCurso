@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 
 use Illuminate\Http\Request;
+use App\Models\Permission;
 use Illuminate\Support\Str;
 class RoleController extends Controller
 {
@@ -17,7 +18,20 @@ class RoleController extends Controller
     }
 
     public function update(Role $role){
-        dd($role);
+        $role->name = Str::ucfirst(request('name'));
+        $role->slug = Str::of(request('name'))->slug('-');
+        
+        if($role->isDirty('name')){
+            session()->flash('role-updated','Role Updated'. request('name'));
+            $role->save();
+        }else {
+            session()->flash('role-updated','Nothing has been updated');
+            
+        }
+        
+        return back();
+    
+        //dd($role);
     }
     public function store(){
         request()->validate([
@@ -38,6 +52,9 @@ class RoleController extends Controller
         return back();
     }
     public function edit(Role $role){
-        return view('admin.role.edit', ['role'=>$role]);
+        return view('admin.role.edit', [
+            'role'=>$role,
+            'permissions'=>Permission::all()        
+        ]);
     }
 }
