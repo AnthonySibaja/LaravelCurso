@@ -57,7 +57,7 @@
       @if(auth()->user()->userHasRole('Admin'))
       <x-admin.sidebar.admin-sidebar-user-links></x-admin.sidebar.admin-sidebar-user-links>
       @endif
-
+      <x-admin.sidebar.authorization-links></x-admin.sidebar.authorization-links>
       
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
