@@ -15,6 +15,10 @@ class RoleController extends Controller
             'roles'=> Role::all()
         ]);
     }
+
+    public function update(Role $role){
+        dd($role);
+    }
     public function store(){
         request()->validate([
             'name'=>['required']
