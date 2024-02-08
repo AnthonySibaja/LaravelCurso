@@ -45,5 +45,9 @@ class UserController extends Controller
         session()->flash('user-deleted', 'User has been deleted');
         return back();
     }
+
+    public function attach(Role $role){
+        dd($role);
+    }
     
 }
