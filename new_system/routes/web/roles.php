@@ -7,3 +7,5 @@ use Illuminate\Support\Facades\Route;
  Route::delete('/roles/{role}/destroy', [App\Http\Controllers\RoleController::class, 'destroy'])->name('roles.destroy');
  Route::get('/roles/{role}/edit', [App\Http\Controllers\RoleController::class, 'edit'])->name('roles.edit');
  Route::put('/roles/{role}/update', [App\Http\Controllers\RoleController::class, 'update'])->name('roles.update');
+ Route::put('/roles/{role}/attach', [App\Http\Controllers\RoleController::class, 'attach'])->name('role.permission.attach');
+ Route::put('/roles/{role}/detach', [App\Http\Controllers\RoleController::class, 'detach'])->name('role.permission.detach');
