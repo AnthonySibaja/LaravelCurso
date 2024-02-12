@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Photo;
 use App\Http\Requests\UsersRequest;
 class AdminUsersController extends Controller
 {
@@ -53,6 +54,8 @@ class AdminUsersController extends Controller
             $photo = Photo::create(['file'=>$name]);
             $input['photo_id']= $photo->id;
         }
+        $input['password']= bcrypt($request->password);
+        User::create($input);
     }
 
 
