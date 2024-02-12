@@ -1,7 +1,7 @@
-const { mix } = require('laravel-mix');
-
-mix.js('public/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+mix.js('resources/js/app.js', 'public/js')
+   .postCss('resources/sass/app.scss', 'public/css', [
+       require('tailwindcss'),
+   ]);
 
 mix.styles([
     'resources/assets/css/libs/blog-post.css',
