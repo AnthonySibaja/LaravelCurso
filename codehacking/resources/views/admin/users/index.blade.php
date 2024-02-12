@@ -7,6 +7,7 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Id</th>
+                <th scope="col">Photo</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Role</th>
@@ -20,6 +21,7 @@
                 @foreach ($users as $user)
                     <tr>
                         <td>{{$user->id}}</td>
+                        <td><img height="100px" src="{{$user->photo_id ? $user->photo->file : 'No Photo'}}" alt=""></td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->role ? $user->role->name : 'No Role'}}</td>
