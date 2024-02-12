@@ -1,0 +1,3 @@
+compposer requier laravelcollective =se  instalaran paquete Laravel Collective en tu proyecto y actualizará tu archivo 
+composer.json para incluir la dependencia.
+
