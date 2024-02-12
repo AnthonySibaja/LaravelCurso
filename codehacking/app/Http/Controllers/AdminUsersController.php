@@ -40,13 +40,20 @@ class AdminUsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(UsersRequest $request)
-{
-    if ($request->hasFile('photo_id') && $request->file('photo_id')->isValid()) {
-        return "photo exists and is valid";
-    } else {
-        return "photo does not exist or is not valid";
+    {
+        // if ($request->hasFile('photo_id') && $request->file('photo_id')->isValid()) {
+        //     return "photo exists and is valid";
+        // } else {
+        //     return "photo does not exist or is not valid";
+        // }
+        $input = $request->all();
+        if($file = $request->file('photo_id')){
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['file'=>$name]);
+            $input['photo_id']= $photo->id;
+        }
     }
-}
 
 
     /**
