@@ -14,14 +14,11 @@ class AdminUsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+        {
+            $users = User::all();
+            return view('admin.users.index', compact('users'));
+        }
 
-
-        $users = User::all();
-
-        return view('admin.users.index', compact('users'));
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -43,12 +40,14 @@ class AdminUsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(UsersRequest $request)
-    {
-        //return $request->all();
-        User::create($request->all());
-        return redirect('/admin/users');
-        
+{
+    if ($request->hasFile('photo_id') && $request->file('photo_id')->isValid()) {
+        return "photo exists and is valid";
+    } else {
+        return "photo does not exist or is not valid";
     }
+}
+
 
     /**
      * Display the specified resource.
