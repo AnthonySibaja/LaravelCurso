@@ -29,3 +29,4 @@ Route::group(['middleware' => \App\Http\Middleware\Admin::class], function () {
     Route::delete('/admin/post/{id}/destroy', [App\Http\Controllers\AdminPostsController::class, 'destroy'])->name('admin.post.destroy');
 
 });
+

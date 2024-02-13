@@ -32,9 +32,21 @@
 
 
         <div class="form-group">
-            {!! Form::submit('Create Post', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Create Post', ['class' => 'btn btn-primary col-sm-6']) !!}
+            
         </div>
+
+       
         {!! Form::close() !!}
+        {!! Form::open(['method' => 'DELETE','action' => ['App\Http\Controllers\AdminPostsController@destroy', $post->id ],'files' => true,]) !!}
+
+            {!! Form::submit('Delete Post', ['class' => 'btn btn-danger col-sm-6']) !!}
+       
+
+       
+        {!! Form::close() !!}
+
+        
     </div>
     <div class="row">
 
