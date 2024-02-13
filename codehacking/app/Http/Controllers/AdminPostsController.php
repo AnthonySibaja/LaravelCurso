@@ -54,7 +54,7 @@ class AdminPostsController extends Controller
             $input['photo_id'] = $photo->id;
         }
         $user->posts()->create($input);
-        return redirect('/admin/posts');
+        return redirect('/admin/post');
      }
 
 
