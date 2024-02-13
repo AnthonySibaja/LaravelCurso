@@ -24,5 +24,8 @@ Route::group(['middleware' => \App\Http\Middleware\Admin::class], function () {
     Route::resource('admin/post', App\Http\Controllers\AdminPostsController::class);
     Route::get('/admin/post', [App\Http\Controllers\AdminPostsController::class, 'index'])->name('admin.post.index');
     Route::get('/admin/post/create', [App\Http\Controllers\AdminPostsController::class, 'create'])->name('admin.post.create');
+    Route::patch('/admin/post/{id}/update', [App\Http\Controllers\AdminPostsController::class, 'update'])->name('admin.post.update');
+    Route::get('/admin/post/{user}/edit', [App\Http\Controllers\AdminPostsController::class, 'edit'])->name('admin.post.edit');
+    Route::delete('/admin/post/{id}/destroy', [App\Http\Controllers\AdminPostsController::class, 'destroy'])->name('admin.post.destroy');
 
 });
