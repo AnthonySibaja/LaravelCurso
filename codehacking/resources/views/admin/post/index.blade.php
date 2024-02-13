@@ -7,7 +7,7 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">User id</th>
+                <th scope="col">User</th>
                 <th scope="col">Category id</th>
                 <th scope="col">Photo id</th>
                 <th scope="col">Title</th>
@@ -21,7 +21,7 @@
                 @foreach ($posts as $post)
                     <tr>
                         <td>{{ $post->id }}</td>
-                        <td>{{ $post->user_id }}</td>
+                        <td>{{ $post->user->name }}</td>
                         <td>{{ $post->category_id }}</td>
                         <td>{{ $post->photo_id }}</td>
                         <td>{{ $post->title }}</td>
