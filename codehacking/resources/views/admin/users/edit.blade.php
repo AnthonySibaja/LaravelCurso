@@ -46,9 +46,25 @@
                 {!! Form::password('password', ['class' => 'form-control']) !!}
             </div>
             <div class="form-group">
-                {!! Form::submit('Update User', ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Update User', ['class' => 'btn btn-primary col-sm-4']) !!}
             </div>
             {!! Form::close() !!}
+
+
+
+            {!! Form::model($user, [
+                'method' => 'DELETE',
+                'action' => ['App\Http\Controllers\AdminUsersController@destroy', $user->id, ],
+                'files' => true,
+               
+            ]) !!}
+
+            <div class="form-group">
+                {!! Form::submit( 'Delete',['class'=>'btn btn-danger col-sm-4']) !!}
+                  </div>
+         
+            {!! Form::close() !!}
+
         </div>
     </div>
     <div>
