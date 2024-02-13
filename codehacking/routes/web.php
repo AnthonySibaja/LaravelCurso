@@ -9,11 +9,11 @@ use App\Http\Middleware\Admin;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
 Route::group(['middleware' => \App\Http\Middleware\Admin::class], function () {
 //user  
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
     Route::resource('admin/users', App\Http\Controllers\AdminUsersController::class);
     Route::get('/admin/users', [App\Http\Controllers\AdminUsersController::class, 'index'])->name('admin.users.index');
     Route::get('/admin/users/create', [App\Http\Controllers\AdminUsersController::class, 'create'])->name('admin.users.create');
