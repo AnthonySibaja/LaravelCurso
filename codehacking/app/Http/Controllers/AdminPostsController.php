@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Http\Requests\PostsCreateRequest;
 
 class AdminPostsController extends Controller
 {
@@ -36,9 +37,10 @@ class AdminPostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostsCreateRequest $request)
     {
-        return $request->all(); 
+        $user = Auth::user();
+        $user->posts;
      }
 
 
