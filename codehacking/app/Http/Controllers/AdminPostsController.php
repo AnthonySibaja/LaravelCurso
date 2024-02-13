@@ -39,8 +39,17 @@ class AdminPostsController extends Controller
      */
     public function store(PostsCreateRequest $request)
     {
+        $input = $request->all();
         $user = Auth::user();
-        $user->posts;
+        if($file =$request->file('photo_id')){
+            $name = time() . $file->getClientOriginalName();
+
+            $file->move('images', $name);
+
+            $photo = Photo::create(['file'=>$name]);
+
+            $input['photo_id'] = $photo->id;
+        }
      }
 
 
