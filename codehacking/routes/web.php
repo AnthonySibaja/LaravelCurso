@@ -27,6 +27,7 @@ Route::group(['middleware' => \App\Http\Middleware\Admin::class], function () {
     Route::patch('/admin/post/{id}/update', [App\Http\Controllers\AdminPostsController::class, 'update'])->name('admin.post.update');
     Route::get('/admin/post/{user}/edit', [App\Http\Controllers\AdminPostsController::class, 'edit'])->name('admin.post.edit');
     Route::delete('/admin/post/{id}/destroy', [App\Http\Controllers\AdminPostsController::class, 'destroy'])->name('admin.post.destroy');
-
+//category
+    Route::resource('admin/categories', App\Http\Controllers\AdminCategoriesController::class);
 });
 
