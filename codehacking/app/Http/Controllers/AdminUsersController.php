@@ -48,14 +48,24 @@ class AdminUsersController extends Controller
         // } else {
         //     return "photo does not exist or is not valid";
         // }
-        $input = $request->all();
+
+        
+        if($request->password==''){
+            $input = $request->except('password');
+
+        }else{
+            $input = $request->all();
+            $input['password']= bcrypt($request->password);
+        }
+
+        //$input = $request->all();
         if($file = $request->file('photo_id')){
             $name = time() . $file->getClientOriginalName();
             $file->move('images', $name);
             $photo = Photo::create(['file'=>$name]);
             $input['photo_id']= $photo->id;
         }
-        $input['password']= bcrypt($request->password);
+        //$input['password']= bcrypt($request->password);
         User::create($input);
         return redirect('/admin/users');
     }
@@ -97,7 +107,17 @@ class AdminUsersController extends Controller
     public function update(UserEditRequest $request, $id)
     {
         //
+
         $user = User::findOrFail($id);
+
+        if($request->password==''){
+            $input = $request->except('password');
+
+        }else{
+            $input = $request->all();
+            $input['password']= bcrypt($request->password);
+        }
+        
         $input = $request->all();
         if($file = $request->file('photo_id')){
             $name =time() . $file->getClientOriginalName();
