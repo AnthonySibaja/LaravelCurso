@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Photo;
 use App\Http\Requests\PostsCreateRequest;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminPostsController extends Controller
 {
@@ -50,6 +53,8 @@ class AdminPostsController extends Controller
 
             $input['photo_id'] = $photo->id;
         }
+        $user->posts()->create($input);
+        return redirect('/admin/posts');
      }
 
 

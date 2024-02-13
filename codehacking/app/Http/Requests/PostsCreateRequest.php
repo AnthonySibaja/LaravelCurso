@@ -24,10 +24,10 @@ class PostsCreateRequest extends FormRequest
     public function rules()
     {
         return [
-              'category_id'=>'required', 
-              'photo_id'=>'required',  
-              'title'=>'required',  
-              'body'=>'required',   
+            //   'category_id'=>'required', 
+            //   'photo_id'=>'required',  
+            //   'title'=>'required',  
+            //   'body'=>'required',   
         ];
     }
 }
