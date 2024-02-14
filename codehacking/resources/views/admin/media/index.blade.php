@@ -26,6 +26,22 @@
                     <td>{{ $photos->created_at ? $photos->created_at->diffForHumans() : 'N/A' }}</td>
                     
                     <td>{{ $photos->updated_at ? $photos->updated_at->diffForHumans() : 'N/A' }}</td>
+                    <td>
+
+                        {!! Form::open([
+                            'method' => 'DELETE',
+                            'action' => ['App\Http\Controllers\AdminCategoriesController@destroy', $photo->id],
+                            'files' => true,
+                        ]) !!}
+                    
+                    
+                    
+                        <div class="form-group">
+                            {!! Form::submit('Delete Category', ['class' => 'btn btn-danger']) !!}
+                        </div>
+                        {!! Form::close() !!}
+
+                    </td>
                 </tr>
             @endforeach
         @endif
