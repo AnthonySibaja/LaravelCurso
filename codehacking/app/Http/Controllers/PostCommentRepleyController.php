@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Comment;
 class PostCommentRepleyController extends Controller
 {
     /**
@@ -65,6 +66,9 @@ class PostCommentRepleyController extends Controller
     public function show($id)
     {
         //
+        $comment = Comment::findOrFail($id);
+        $reply = $comment->reply;
+        return view('admin.comments.repiles.show', compact('reply'));
     }
 
     /**
@@ -88,6 +92,8 @@ class PostCommentRepleyController extends Controller
     public function update(Request $request, $id)
     {
         //
+        CommentReply::findOrFail($id)->update($request->all());
+        return redirect()->back();
     }
 
     /**
@@ -98,6 +104,7 @@ class PostCommentRepleyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        CommentReply::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }
