@@ -15,10 +15,14 @@ Auth::routes();
 
 
 Route::get('/post/{id}', [AdminPostsController::class, 'post'])->name('home.post');
-Route::get('/post/create', [AdminPostsController::class, 'create'])->name('post.create');
-Route::patch('/post/{id}/update', [AdminPostsController::class, 'update'])->name('post.update');
-Route::get('post/{user}/edit', [AdminPostsController::class, 'edit'])->name('post.edit');
-Route::delete('post/{id}/destroy', [AdminPostsController::class, 'destroy'])->name('post.destroy');
+
+Route::resource('admin/comment', App\Http\Controllers\PostCommentController::class);
+Route::get('/admin/comment', [App\Http\Controllers\PostCommentController::class, 'index'])->name('admin.comment.index');
+Route::get('/admin/comment/create', [App\Http\Controllers\PostCommentController::class, 'create'])->name('admin.comment.create');
+Route::patch('/admin/comment/{id}/update', [App\Http\Controllers\PostCommentController::class, 'update'])->name('admin.comment.update');
+Route::get('/admin/comment/{user}/edit', [App\Http\Controllers\PostCommentController::class, 'edit'])->name('admin.comment.edit');
+Route::delete('/admin/comment/{id}/destroy', [App\Http\Controllers\PostCommentController::class, 'destroy'])->name('admin.comment.destroy');
+
 
 Route::get('/', function () {
     return view('welcome');
