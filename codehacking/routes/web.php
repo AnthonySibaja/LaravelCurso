@@ -42,6 +42,20 @@ Route::group(['middleware' => \App\Http\Middleware\Admin::class], function () {
     Route::patch('/admin/media/{id}/update', [App\Http\Controllers\AdminMediasController::class, 'update'])->name('admin.media.update');
     Route::get('/admin/media/{user}/edit', [App\Http\Controllers\AdminMediasController::class, 'edit'])->name('admin.media.edit');
     Route::delete('/admin/media/{id}/destroy', [App\Http\Controllers\AdminMediasController::class, 'destroy'])->name('admin.media.destroy');
+//comments
+    Route::resource('admin/comment', App\Http\Controllers\PostCommentController::class);
+    Route::get('/admin/comment', [App\Http\Controllers\PostCommentController::class, 'index'])->name('admin.comment.index');
+    Route::get('/admin/comment/create', [App\Http\Controllers\PostCommentController::class, 'create'])->name('admin.comment.create');
+    Route::patch('/admin/comment/{id}/update', [App\Http\Controllers\PostCommentController::class, 'update'])->name('admin.comment.update');
+    Route::get('/admin/comment/{user}/edit', [App\Http\Controllers\PostCommentController::class, 'edit'])->name('admin.comment.edit');
+    Route::delete('/admin/comment/{id}/destroy', [App\Http\Controllers\PostCommentController::class, 'destroy'])->name('admin.comment.destroy');
+//commentsrREPLEY
+Route::resource('admin/commentRepley', App\Http\Controllers\PostCommentRepleyController::class);
+Route::get('/admin/commentRepley', [App\Http\Controllers\PostCommentRepleyController::class, 'index'])->name('admin.commentRepley.index');
+Route::get('/admin/commentRepley/create', [App\Http\Controllers\PostCommentRepleyController::class, 'create'])->name('admin.commentRepley.create');
+Route::patch('/admin/commentRepley/{id}/update', [App\Http\Controllers\PostCommentRepleyController::class, 'update'])->name('admin.commentRepley.update');
+Route::get('/admin/commentRepley/{user}/edit', [App\Http\Controllers\PostCommentRepleyController::class, 'edit'])->name('admin.commentRepley.edit');
+Route::delete('/admin/commentRepley/{id}/destroy', [App\Http\Controllers\PostCommentRepleyController::class, 'destroy'])->name('admin.commentRepley.destroy');
 
 });
 

@@ -3,7 +3,7 @@
 @section('content')
 
 <h1>Media</h1>
-@if($photos)
+@if(isset($photos) && count($photos) > 0)
 
 <table class="table">
     <thead class="thead-dark">
@@ -17,23 +17,22 @@
     </thead>
     <tbody>
         
-            @foreach ($photos as $photos)
+            @foreach ($photos as $photo)
                 <tr>
-                    <td>{{ $photos->id }}</td>
+                    <td>{{ $photo->id }}</td>
                    
-                    <td><img height="50" src="{{$photos->file}}" alt=""></td>
+                    <td><img height="50" src="{{$photo->file}}" alt=""></td>
                     
-                    <td>{{ $photos->created_at ? $photos->created_at->diffForHumans() : 'N/A' }}</td>
+                    <td>{{ $photo->created_at ? $photo->created_at->diffForHumans() : 'N/A' }}</td>
                     
-                    <td>{{ $photos->updated_at ? $photos->updated_at->diffForHumans() : 'N/A' }}</td>
+                    <td>{{ $photo->updated_at ? $photo->updated_at->diffForHumans() : 'N/A' }}</td>
                     <td>
 
                         {!! Form::open([
                             'method' => 'DELETE',
-                            'action' => ['App\Http\Controllers\AdminCategoriesController@destroy', $photo->id],
+                            'action' => ['App\Http\Controllers\AdminMediasController@destroy', $photo->id],
                             'files' => true,
                         ]) !!}
-                    
                     
                     
                         <div class="form-group">
