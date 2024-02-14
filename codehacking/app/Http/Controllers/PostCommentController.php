@@ -36,6 +36,7 @@ class PostCommentController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**

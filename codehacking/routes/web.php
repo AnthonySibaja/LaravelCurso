@@ -4,16 +4,29 @@ use Illuminate\Support\Facades\Route;
 use resources\views\layouts;
 use Illuminate\Support\Facades\Auth; 
 use App\Http\Middleware\Admin;
+use App\Http\Controllers\AdminPostsController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 Auth::routes();
 
+
+
+Route::get('/post/{id}', [AdminPostsController::class, 'post'])->name('home.post');
+Route::get('/post/create', [AdminPostsController::class, 'create'])->name('post.create');
+Route::patch('/post/{id}/update', [AdminPostsController::class, 'update'])->name('post.update');
+Route::get('post/{user}/edit', [AdminPostsController::class, 'edit'])->name('post.edit');
+Route::delete('post/{id}/destroy', [AdminPostsController::class, 'destroy'])->name('post.destroy');
+
+
 Route::group(['middleware' => \App\Http\Middleware\Admin::class], function () {
-//user  
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    //user  
 
     Route::resource('admin/users', App\Http\Controllers\AdminUsersController::class);
     Route::get('/admin/users', [App\Http\Controllers\AdminUsersController::class, 'index'])->name('admin.users.index');
