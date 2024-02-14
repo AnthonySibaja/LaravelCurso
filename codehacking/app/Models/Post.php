@@ -7,10 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Photo;
 use App\Models\Category;
+use Cviebrock\EloquentSluggable\Sluggable;
 
-class Post extends Model
+class Post extends Model implements SluggableInterface
 {
     use HasFactory;
+
+    use Sluggable;
+   
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title',
+                'save_to'=>'slug',
+                'on_update'=>true,
+            ]
+        ];
+    }
     protected $fillable=[
         'category_id',
         'photo_id',
