@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\Comment;
 class PostCommentController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class PostCommentController extends Controller
     public function index()
     {
         //
-        return view('admin.comments.index');
+        $comments = Comment::all();
+        return view('admin.comments.index', compact('comments'));
     }
 
     /**
@@ -36,6 +38,18 @@ class PostCommentController extends Controller
     public function store(Request $request)
     {
         //
+        $user =Auth::user();
+        $data = [
+            'post_id'=>$request->post_id,
+            'author'=>$user->name,
+            'email'=>$user->email,
+           'photo'=>$user->photo->file,
+            
+            'body'=>$request->body
+        ];
+        Comment::create($request->all());
+        $request->session()->flash('comment_message','your message has been submitted and is waiting moderation');
+        return reedirect()->back();
         
     }
 
@@ -48,6 +62,8 @@ class PostCommentController extends Controller
     public function show($id)
     {
         //
+        
+
     }
 
     /**

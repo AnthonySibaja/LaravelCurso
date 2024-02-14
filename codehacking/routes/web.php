@@ -20,11 +20,11 @@ Route::patch('/post/{id}/update', [AdminPostsController::class, 'update'])->name
 Route::get('post/{user}/edit', [AdminPostsController::class, 'edit'])->name('post.edit');
 Route::delete('post/{id}/destroy', [AdminPostsController::class, 'destroy'])->name('post.destroy');
 
-
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::group(['middleware' => \App\Http\Middleware\Admin::class], function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    
 
     //user  
 
