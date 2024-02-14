@@ -22,7 +22,7 @@ class AdminPostsController extends Controller
         
         $posts = Post::all();
         return view('admin.post.index', compact('posts'));
-    
+        
     }
 
     /**
@@ -74,6 +74,7 @@ class AdminPostsController extends Controller
     public function show($id)
     {
         //
+        
     }
 
     /**
@@ -131,7 +132,11 @@ class AdminPostsController extends Controller
     }
 
     public function post($id){
-        $post = Post::FindOrFail($id);
-        return view('post', compact('post'));
-    }
+        $post = Post::findOrFail($id);
+        $comments = $post->comments()->where('is_active', 1)->get();
+      
+        return view('post', compact('post', 'comments'));
+}
+    
+    
 }

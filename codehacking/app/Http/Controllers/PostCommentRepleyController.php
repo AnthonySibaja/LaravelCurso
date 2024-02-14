@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class PostCommentRepleyController extends Controller
 {
     /**
@@ -36,6 +36,25 @@ class PostCommentRepleyController extends Controller
     {
         //
     }
+
+
+
+    public function createRepley()
+    {
+        $user =Auth::user();
+        $data = [
+            'comment_id'=>$request->post_id,
+            'author'=>$user->name,
+            'email'=>$user->email,
+           'photo'=>$user->photo->file,
+            
+            'body'=>$request->body
+        ];
+        CommentRepley::create($request->all());
+        $request->session()->flash('comment_message','your message has been submitted and is waiting moderation');
+        return reedirect()->back();
+    }
+
 
     /**
      * Display the specified resource.

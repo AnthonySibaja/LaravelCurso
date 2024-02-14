@@ -24,6 +24,14 @@ Route::patch('/admin/comment/{id}/update', [App\Http\Controllers\PostCommentCont
 Route::get('/admin/comment/{user}/edit', [App\Http\Controllers\PostCommentController::class, 'edit'])->name('admin.comment.edit');
 Route::delete('/admin/comment/{id}/destroy', [App\Http\Controllers\PostCommentController::class, 'destroy'])->name('admin.comment.destroy');
 
+Route::resource('admin/commentReplies', App\Http\Controllers\PostCommentRepleyController::class);
+Route::get('/admin/commentReplies', [App\Http\Controllers\PostCommentRepleyController::class, 'index'])->name('admin.commentReplies.index');
+Route::get('/admin/commentReplies/create', [App\Http\Controllers\PostCommentRepleyController::class, 'create'])->name('admin.commentReplies.create');
+Route::get('/admin/commentReplies/show', [App\Http\Controllers\PostCommentRepleyController::class, 'show'])->name('admin.commentReplies.show');
+Route::patch('/admin/commentReplies/{id}/update', [App\Http\Controllers\PostCommentRepleyController::class, 'update'])->name('admin.commentReplies.update');
+Route::get('/admin/commentReplies/{user}/edit', [App\Http\Controllers\PostCommentRepleyController::class, 'edit'])->name('admin.commentReplies.edit');
+Route::delete('/admin/commentReplies/{id}/destroy', [App\Http\Controllers\PostCommentRepleyController::class, 'destroy'])->name('admin.commentReplies.destroy');
+
 
 Route::get('/', function () {
     return view('welcome');
