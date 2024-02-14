@@ -11,6 +11,7 @@ Route::get('/', function () {
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
+
 Route::group(['middleware' => \App\Http\Middleware\Admin::class], function () {
 //user  
 
@@ -34,5 +35,13 @@ Route::group(['middleware' => \App\Http\Middleware\Admin::class], function () {
     Route::patch('/admin/categories/{id}/update', [App\Http\Controllers\AdminCategoriesController::class, 'update'])->name('admin.categories.update');
     Route::get('/admin/categories/{user}/edit', [App\Http\Controllers\AdminCategoriesController::class, 'edit'])->name('admin.categories.edit');
     Route::delete('/admin/categories/{id}/destroy', [App\Http\Controllers\AdminCategoriesController::class, 'destroy'])->name('admin.categories.destroy');
+//media
+    Route::resource('admin/media', App\Http\Controllers\AdminMediasController::class);
+    Route::get('/admin/media', [App\Http\Controllers\AdminMediasController::class, 'index'])->name('admin.media.index');
+    Route::get('/admin/media/create', [App\Http\Controllers\AdminMediasController::class, 'create'])->name('admin.media.create');
+    Route::patch('/admin/media/{id}/update', [App\Http\Controllers\AdminMediasController::class, 'update'])->name('admin.media.update');
+    Route::get('/admin/media/{user}/edit', [App\Http\Controllers\AdminMediasController::class, 'edit'])->name('admin.media.edit');
+    Route::delete('/admin/media/{id}/destroy', [App\Http\Controllers\AdminMediasController::class, 'destroy'])->name('admin.media.destroy');
+
 });
 
