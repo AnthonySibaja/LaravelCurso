@@ -29,5 +29,10 @@ Route::group(['middleware' => \App\Http\Middleware\Admin::class], function () {
     Route::delete('/admin/post/{id}/destroy', [App\Http\Controllers\AdminPostsController::class, 'destroy'])->name('admin.post.destroy');
 //category
     Route::resource('admin/categories', App\Http\Controllers\AdminCategoriesController::class);
+    Route::get('/admin/categories', [App\Http\Controllers\AdminCategoriesController::class, 'index'])->name('admin.categories.index');
+    Route::get('/admin/categories/create', [App\Http\Controllers\AdminCategoriesController::class, 'create'])->name('admin.categories.create');
+    Route::patch('/admin/categories/{id}/update', [App\Http\Controllers\AdminCategoriesController::class, 'update'])->name('admin.categories.update');
+    Route::get('/admin/categories/{user}/edit', [App\Http\Controllers\AdminCategoriesController::class, 'edit'])->name('admin.categories.edit');
+    Route::delete('/admin/categories/{id}/destroy', [App\Http\Controllers\AdminCategoriesController::class, 'destroy'])->name('admin.categories.destroy');
 });
 
