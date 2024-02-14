@@ -62,7 +62,7 @@ class PostCommentController extends Controller
     public function show($id)
     {
         //
-        
+        return view('admin.comments.show');
 
     }
 

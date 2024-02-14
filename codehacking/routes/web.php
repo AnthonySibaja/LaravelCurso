@@ -19,6 +19,7 @@ Route::get('/post/{id}', [AdminPostsController::class, 'post'])->name('home.post
 Route::resource('admin/comment', App\Http\Controllers\PostCommentController::class);
 Route::get('/admin/comment', [App\Http\Controllers\PostCommentController::class, 'index'])->name('admin.comment.index');
 Route::get('/admin/comment/create', [App\Http\Controllers\PostCommentController::class, 'create'])->name('admin.comment.create');
+Route::get('/admin/comment/show', [App\Http\Controllers\PostCommentController::class, 'show'])->name('admin.comment.show');
 Route::patch('/admin/comment/{id}/update', [App\Http\Controllers\PostCommentController::class, 'update'])->name('admin.comment.update');
 Route::get('/admin/comment/{user}/edit', [App\Http\Controllers\PostCommentController::class, 'edit'])->name('admin.comment.edit');
 Route::delete('/admin/comment/{id}/destroy', [App\Http\Controllers\PostCommentController::class, 'destroy'])->name('admin.comment.destroy');

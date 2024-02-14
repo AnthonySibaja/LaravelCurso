@@ -28,7 +28,8 @@
                         <td><img height="100px" src="{{ $post->photo ? $post->photo->file : 'http://placehold.it/400x400'}}" alt=""></td>
                         <td>{{$post->title}}</td>
                         <td>{{ \Illuminate\Support\Str::limit($post->body, 7) }}</td>
-
+                        <td><a href="{{route('home.post',$post->id)}}">View Post</a></td>
+                        <td><a href="{{route('admin.comment.show', $post->id)}}">View Comments</a></td>
                         <td>{{ $post->created_at ? $post->created_at->diffForHumans() : 'N/A' }}</td>
                         
                         <td>{{ $post->updated_at ? $post->updated_at->diffForHumans() : 'N/A' }}</td>
